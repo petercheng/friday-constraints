@@ -1,0 +1,21 @@
+{
+  "id": "friday-constraints",
+  "kind": "governance",
+  "name": "Friday Constraints",
+  "description": "Enforce Friday's behavioral rules — prevent writing implementation code, test code, and running dev commands without approval",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "rulesFile": {
+        "type": "string",
+        "description": "Path to rules.yaml (relative to plugin directory, default: rules.yaml)"
+      }
+    }
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "hooks": ["before_tool_call"]
+  }
+}

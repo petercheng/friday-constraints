@@ -1,0 +1,78 @@
+rules:
+  - name: "no-code-implementation"
+    description: "Friday should not write implementation code"
+    trigger:
+      tools: [write, edit]
+      patterns:
+        - "*.py"
+        - "*.ts"
+        - "*.tsx"
+        - "*.js"
+        - "*.jsx"
+        - "*.java"
+        - "*.go"
+        - "*.rs"
+        - "*.cpp"
+        - "*.h"
+    action:
+      type: require_approval
+      title: "Code delegation check"
+      message: "⚠️ Writing implementation code is a Jarvis task. Consider sending task docs to inbox-jarvis/ instead."
+      severity: warning
+      timeout_ms: 30000
+      timeout_behavior: allow
+
+  - name: "no-test-writing"
+    description: "Friday should not write tests"
+    trigger:
+      tools: [write, edit]
+      patterns:
+        - "**/test_*.py"
+        - "**/*_test.py"
+        - "**/test_*.ts"
+        - "**/*.test.ts"
+        - "**/test_*.js"
+        - "**/*.test.js"
+        - "**/conftest.py"
+    action:
+      type: require_approval
+      title: "Test delegation check"
+      message: "⚠️ Writing tests is a Jarvis task."
+      severity: warning
+      timeout_ms: 30000
+      timeout_behavior: allow
+
+  - name: "no-src-modification"
+    description: "Friday should not modify source directories"
+    trigger:
+      tools: [write, edit]
+      patterns:
+        - "src/**/*.py"
+        - "src/**/*.ts"
+        - "tests/**/*.py"
+    action:
+      type: require_approval
+      title: "Source modification check"
+      message: "⚠️ Modifying source code should be reviewed by Jarvis."
+      severity: warning
+      timeout_ms: 30000
+      timeout_behavior: allow
+
+  - name: "no-dev-commands"
+    description: "Friday should not run development commands"
+    trigger:
+      tools: [exec]
+      command_patterns:
+        - "pytest"
+        - "npm test"
+        - "npm run"
+        - "pip install"
+        - "python -m pytest"
+        - "python -m pip"
+    action:
+      type: require_approval
+      title: "Dev command check"
+      message: "⚠️ Development commands should be run by Jarvis."
+      severity: info
+      timeout_ms: 30000
+      timeout_behavior: allow
