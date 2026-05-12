@@ -48,7 +48,7 @@ interface RulesFile {
 function loadRules(): Rule[] {
   try {
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const yamlPath = resolve(__dirname, "rules.yaml");
+    const yamlPath = resolve(dirname(__dirname), "rules.yaml");
     const raw = readFileSync(yamlPath, "utf-8");
     const parsed = parseYaml(raw) as RulesFile;
     return parsed?.rules ?? [];
