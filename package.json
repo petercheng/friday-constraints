@@ -1,0 +1,27 @@
+{
+  "name": "@petercheng/friday-constraints",
+  "version": "1.0.0",
+  "description": "Friday Agent behavioral constraints — prevent writing code without approval",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "minimatch": "^10.0.0",
+    "yaml": "^2.0.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": ["openclaw", "plugin", "constraints", "governance"],
+  "author": "Peter Cheng",
+  "license": "Apache-2.0",
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  }
+}
