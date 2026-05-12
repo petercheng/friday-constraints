@@ -103,7 +103,7 @@ export default definePluginEntry({
       "before_tool_call",
       async (event, ctx) => {
         // Only enforce on Friday
-        if (!isFriday(ctx?.agentId)) return;
+        // if (!isFriday(ctx?.agentId)) { console.log("[friday-constraints] Tool call by:", ctx?.agentId); }
 
         const toolName = event.toolName ?? "";
         const filePath: string = String(event.params?.file_path ?? event.params?.path ?? "");
